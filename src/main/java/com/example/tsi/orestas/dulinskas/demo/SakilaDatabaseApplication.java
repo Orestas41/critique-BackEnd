@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/HomePage")
 public class SakilaDatabaseApplication {
 
+
 	@Autowired
 	private LanguageRepository languageRepository;
 
