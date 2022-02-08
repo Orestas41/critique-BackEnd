@@ -12,10 +12,6 @@ class SakilaDatabaseApplicationTests {
 	void contextLoads() {
 	}
 
-	public void test_IsEmpty(){
-		SakilaDatabaseApplication testIsEmpty = new SakilaDatabaseApplication();
-		testIsEmpty.isEmpty();
-		assertEquals(false, testIsEmpty.isEmpty(),"wrong");
-	}
+
 
 }
