@@ -20,6 +20,10 @@ public class SakilaDatabaseApplication {
 
 	}
 
+	private boolean isEmpty = false;
+	public boolean isEmpty(){
+		return isEmpty;
+	}
 
 
 }
