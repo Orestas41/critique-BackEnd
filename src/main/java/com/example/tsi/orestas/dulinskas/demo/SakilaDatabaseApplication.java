@@ -22,9 +22,7 @@ public class SakilaDatabaseApplication {
 		this.filmRepository=filmRepository;
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(SakilaDatabaseApplication.class, args);
-	}
+	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
 
 	@GetMapping("/AllLanguages")
 	public @ResponseBody
