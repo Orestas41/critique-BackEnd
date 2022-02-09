@@ -47,5 +47,4 @@ public class SakilaDatabaseApplication {
 		return customerRepository.findAll();
 	}
 
-
 }
