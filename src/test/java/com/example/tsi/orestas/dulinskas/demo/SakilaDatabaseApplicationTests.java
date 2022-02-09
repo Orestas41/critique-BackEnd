@@ -11,6 +11,4 @@ class SakilaDatabaseApplicationTests {
 	//@Test
 	//void contextLoads() {}
 
-
-
 }
