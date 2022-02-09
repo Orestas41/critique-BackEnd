@@ -14,9 +14,6 @@ public class Customer {
     private String last_name;
     private String email;
 
-    public Customer(){
-    }
-
     public int getCustomer_id() {
         return customer_id;
     }

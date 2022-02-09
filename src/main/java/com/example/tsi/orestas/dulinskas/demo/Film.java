@@ -14,12 +14,9 @@ public class Film {
     private String description;
     private int release_year;
 
-    public Film(String title){
-        this.title=title;
-    }
-
-    public Film(){
-    }
+//    public Film(String title){
+//        this.title=title;
+//    }
 
     public int getFilm_id() {
         return film_id;

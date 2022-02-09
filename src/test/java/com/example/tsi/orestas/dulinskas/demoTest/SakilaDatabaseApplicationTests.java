@@ -1,4 +1,4 @@
-package com.example.tsi.orestas.dulinskas.demo;
+package com.example.tsi.orestas.dulinskas.demoTest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
