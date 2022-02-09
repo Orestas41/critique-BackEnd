@@ -9,8 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SakilaDatabaseApplicationTests {
 
 	@Test
-	void contextLoads() {
-	}
+	void contextLoads() {}
 
 
 

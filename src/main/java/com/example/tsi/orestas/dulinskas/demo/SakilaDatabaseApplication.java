@@ -16,10 +16,15 @@ public class SakilaDatabaseApplication {
 	private LanguageRepository languageRepository;
 	@Autowired
 	private FilmRepository filmRepository;
+	@Autowired
+	private CustomerRepository customerRepository;
 
-	public SakilaDatabaseApplication(LanguageRepository languageRepository, FilmRepository filmRepository){
+	public SakilaDatabaseApplication(LanguageRepository languageRepository,
+									 FilmRepository filmRepository,
+									 CustomerRepository customerRepository){
 		this.languageRepository=languageRepository;
 		this.filmRepository=filmRepository;
+		this.customerRepository=customerRepository;
 	}
 
 	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
@@ -34,6 +39,12 @@ public class SakilaDatabaseApplication {
 	public @ResponseBody
 	Iterable<Film>getAllFilms(){
 		return filmRepository.findAll();
+	}
+
+	@GetMapping("/AllCustomers")
+	public @ResponseBody
+	Iterable<Customer>getAllCustomers(){
+		return customerRepository.findAll();
 	}
 
 
