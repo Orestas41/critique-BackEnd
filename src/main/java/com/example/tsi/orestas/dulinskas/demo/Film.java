@@ -22,6 +22,10 @@ public class Film {
         return film_id;
     }
 
+    public void setFilm_id(int film_id) {
+        this.film_id = film_id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -40,5 +44,9 @@ public class Film {
 
     public int getRelease_year() {
         return release_year;
+    }
+
+    public void setRelease_year(int release_year) {
+        this.release_year = release_year;
     }
 }

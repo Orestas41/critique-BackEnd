@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/HomePage")
 public class SakilaDatabaseApplication {
 
-
-	@Autowired
-	private LanguageRepository languageRepository;
 	@Autowired
 	private FilmRepository filmRepository;
 	@Autowired
@@ -22,33 +19,16 @@ public class SakilaDatabaseApplication {
 	private ReviewRepository reviewRepository;
 
 	private String save="save";
-	private int film_id;
 
-	public SakilaDatabaseApplication(LanguageRepository languageRepository,
-									 FilmRepository filmRepository,
+	public SakilaDatabaseApplication(FilmRepository filmRepository,
 									 CustomerRepository customerRepository,
 									 ReviewRepository reviewRepository){
-		this.languageRepository=languageRepository;
 		this.filmRepository=filmRepository;
 		this.customerRepository=customerRepository;
 		this.reviewRepository=reviewRepository;
 	}
 
 	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
-
-	@GetMapping("/AllLanguages")
-	public @ResponseBody
-	Iterable<Language>getAllLanguages(){
-		return languageRepository.findAll();
-	}
-
-	@PostMapping("/AddLanguages")
-	public @ResponseBody
-	String addLanguage(@RequestParam String name){
-		Language addLanguage=new Language(name);
-		languageRepository.save(addLanguage);
-		return save;
-	}
 
 	@GetMapping("/AllFilms")
 	public @ResponseBody
@@ -70,21 +50,10 @@ public class SakilaDatabaseApplication {
 
 	@PostMapping("/AddReviews")
 	public @ResponseBody
-	String addReviews(@RequestParam int film_id, String review){
-		Review addReviews=new Review(review, film_id);
+	String addReviews(@RequestParam int film_film_id, int customer_customer_id, String review){
+		Review addReviews=new Review(review, film_film_id, customer_customer_id);
 		reviewRepository.save(addReviews);
 		return save;
 	}
-
-//	@PostMapping("/AddReviews")
-//	public @ResponseBody
-//	String addReview(@RequestParam int film_id, String review, int customer_id){
-//		Review addReview=new Review();
-//		reviewRepository.save(addReview);
-//		return save;
-//	}
-//	Review addReview(@Validated @RequestBody Review newReview) {
-//		return reviewRepository.save(newReview);
-//	}
 
 }
