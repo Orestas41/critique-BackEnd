@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 //https://localhost:8080/HomePage/All..
 @SpringBootApplication
 @RestController
@@ -17,15 +19,19 @@ public class SakilaDatabaseApplication {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private ReviewRepository reviewRepository;
+	@Autowired
+	private ActorRepository actorRepository;
 
 	private String save="save";
 
 	public SakilaDatabaseApplication(FilmRepository filmRepository,
 									 CustomerRepository customerRepository,
-									 ReviewRepository reviewRepository){
+									 ReviewRepository reviewRepository,
+									 ActorRepository actorRepository){
 		this.filmRepository=filmRepository;
 		this.customerRepository=customerRepository;
 		this.reviewRepository=reviewRepository;
+		this.actorRepository=actorRepository;
 	}
 
 	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
@@ -34,6 +40,12 @@ public class SakilaDatabaseApplication {
 	public @ResponseBody
 	Iterable<Film>getAllFilms(){
 		return filmRepository.findAll();
+	}
+
+	@GetMapping("/Film/{film_id}")
+	public @ResponseBody
+	Optional<Film> getFilmById(@PathVariable int film_id){
+		return filmRepository.findById(film_id);
 	}
 
 	@GetMapping("/AllCustomers")
@@ -50,10 +62,16 @@ public class SakilaDatabaseApplication {
 
 	@PostMapping("/AddReviews")
 	public @ResponseBody
-	String addReviews(@RequestParam int film_film_id, int customer_customer_id, String review){
-		Review addReviews=new Review(review, film_film_id, customer_customer_id);
+	String addReviews(@RequestParam int film_film_id, int customer_customer_id, String customer_review){
+		Review addReviews=new Review(customer_review, film_film_id, customer_customer_id);
 		reviewRepository.save(addReviews);
 		return save;
+	}
+
+	@GetMapping("/AllActors")
+	public @ResponseBody
+	Iterable<Actor>getAllActor(){
+		return actorRepository.findAll();
 	}
 
 }

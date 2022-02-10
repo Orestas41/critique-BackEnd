@@ -13,14 +13,14 @@ public class Review {
     private int review_id;
     private int film_film_id;
     private int customer_customer_id;
-    private String review;
+    private String customer_review;
 
     public Review(){}
 
     public Review(String review, int film_film_id, int customer_customer_id){
         this.film_film_id=film_film_id;
         this.customer_customer_id=customer_customer_id;
-        this.review=review;}
+        this.customer_review =review;}
 
     public int getReview_id() {
         return review_id;
@@ -46,11 +46,11 @@ public class Review {
         this.customer_customer_id = customer_customer_id;
     }
 
-    public String getReview() {
-        return review;
+    public String getCustomer_review() {
+        return customer_review;
     }
-    public void setReview(String review) {
-        this.review = review;
+    public void setCustomer_review(String customer_review) {
+        this.customer_review = customer_review;
     }
 }
 

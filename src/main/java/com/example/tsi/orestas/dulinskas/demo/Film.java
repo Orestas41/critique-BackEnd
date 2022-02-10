@@ -1,22 +1,48 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Film {
+@Table(name = "film")
+public class Film implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int film_id;
     private String title;
     private String description;
     private int release_year;
 
-//    public Film(String title){
-//        this.title=title;
-//    }
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_actor",
+            joinColumns = {
+                    @JoinColumn(name = "film_id", referencedColumnName = "film_id",
+                            nullable = false, updatable = false)},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
+                            nullable = false, updatable = false)})
+    private Set<Actor> actor = new HashSet<>();
+
+    public Film(String title, String description, int release_year){
+        this.title = title;
+        this.description=description;
+        this.release_year=release_year;
+    }
+
+    public Set<Actor> getActor(){
+        return actor;
+    }
+
+    public void setActor(Set<Actor> actor){
+        this.actor = actor;
+    }
+
+    public Film(){
+
+    }
 
     public int getFilm_id() {
         return film_id;

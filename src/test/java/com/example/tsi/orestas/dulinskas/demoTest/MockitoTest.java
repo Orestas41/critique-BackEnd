@@ -19,11 +19,13 @@ public class MockitoTest {
     private CustomerRepository customerRepository;
     @Mock
     private ReviewRepository reviewRepository;
+    @Mock
+    private ActorRepository actorRepository;
 
     @BeforeEach
     void Setup(){
         sakilaDatabaseApplication= new SakilaDatabaseApplication(
-                filmRepository, customerRepository, reviewRepository);
+                filmRepository, customerRepository, reviewRepository, actorRepository);
     }
 
     @Test
@@ -31,7 +33,7 @@ public class MockitoTest {
         Review savedReview = new Review("Test Review", 1, 1);
         String expected = "save";
         String actual = sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
-                savedReview.getCustomer_customer_id(),savedReview.getReview());
+                savedReview.getCustomer_customer_id(),savedReview.getCustomer_review());
         ArgumentCaptor<Review>reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
         verify(reviewRepository).save(reviewArgumentCaptor.capture());
         reviewArgumentCaptor.getValue();

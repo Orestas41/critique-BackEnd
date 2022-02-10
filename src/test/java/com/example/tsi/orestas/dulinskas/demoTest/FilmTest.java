@@ -34,6 +34,12 @@ public class FilmTest {
         assertEquals(expectedTitle, actualTitle, "wrong");
     }
 
+//    @Test
+//    void getTitleTest(){
+//        Film getFilmTitle = new Film("Test");
+//        assertEquals("Test", getFilmTitle.getTitle(),"wrong");
+//    }
+
     @Test
     public void test_description(){
         Film test_description = new Film();

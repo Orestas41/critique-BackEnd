@@ -35,12 +35,12 @@ public class ReviewTest {
     }
 
     @Test
-    public void test_review(){
-        Review test_review = new Review();
-        String expectedReview = "Test";
-        test_review.setReview("Test");
-        String actualReview = test_review.getReview();
-        assertEquals(expectedReview, actualReview, "wrong");
+    public void test_customer_review(){
+        Review test_customerReview = new Review();
+        String expectedCustomerReview = "Test";
+        test_customerReview.setCustomer_review("Test");
+        String actualCustomerReview = test_customerReview.getCustomer_review();
+        assertEquals(expectedCustomerReview, actualCustomerReview, "wrong");
     }
 
 }
