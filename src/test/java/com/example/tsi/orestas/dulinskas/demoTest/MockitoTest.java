@@ -30,10 +30,10 @@ public class MockitoTest {
 
     @Test
     public void testAddReview(){
-        Review savedReview = new Review("Test Review", 1, 1);
+        Review savedReview = new Review("Test Review", 1);
         String expected = "save";
         String actual = sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
-                savedReview.getCustomer_customer_id(),savedReview.getCustomer_review());
+                savedReview.getCustomer_review());
         ArgumentCaptor<Review>reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
         verify(reviewRepository).save(reviewArgumentCaptor.capture());
         reviewArgumentCaptor.getValue();

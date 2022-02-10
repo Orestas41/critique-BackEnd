@@ -26,15 +26,6 @@ public class ReviewTest {
     }
 
     @Test
-    public void test_customer_customer_id(){
-        Review test_customerId = new Review();
-        int expectedCustomerId = 1;
-        test_customerId.setCustomer_customer_id(1);
-        int actualCustomerId = test_customerId.getCustomer_customer_id();
-        assertEquals(expectedCustomerId, actualCustomerId, "wrong");
-    }
-
-    @Test
     public void test_customer_review(){
         Review test_customerReview = new Review();
         String expectedCustomerReview = "Test";

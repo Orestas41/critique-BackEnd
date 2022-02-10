@@ -1,26 +1,34 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
+@Table(name = "review")
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int review_id;
     private int film_film_id;
-    private int customer_customer_id;
     private String customer_review;
+
+//    @OneToMany
+//    @JoinColumn(name ="review_id",insertable = false,updatable = false)
+//    @JsonIgnore
+//    private Set<Film> film;
+
+    @ManyToOne(fetch = FetchType.LAZY )
+    @JoinColumn(name ="film_id", insertable = false, nullable = false, updatable = false)
+    private Film film;
 
     public Review(){}
 
-    public Review(String review, int film_film_id, int customer_customer_id){
-        this.film_film_id=film_film_id;
-        this.customer_customer_id=customer_customer_id;
-        this.customer_review =review;}
+    public Review(String customer_review, int film_film_id){
+        this.film_film_id =film_film_id;
+        this.customer_review = customer_review;}
 
     public int getReview_id() {
         return review_id;
@@ -38,19 +46,12 @@ public class Review {
         this.film_film_id = film_film_id;
     }
 
-    public int getCustomer_customer_id() {
-        return customer_customer_id;
-    }
-
-    public void setCustomer_customer_id(int customer_customer_id) {
-        this.customer_customer_id = customer_customer_id;
-    }
-
     public String getCustomer_review() {
         return customer_review;
     }
     public void setCustomer_review(String customer_review) {
         this.customer_review = customer_review;
     }
+
 }
 

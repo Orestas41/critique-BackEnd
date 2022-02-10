@@ -1,5 +1,7 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -25,6 +27,16 @@ public class Film implements Serializable {
                     @JoinColumn(name = "actor_id", referencedColumnName = "actor_id",
                             nullable = false, updatable = false)})
     private Set<Actor> actor = new HashSet<>();
+
+//    @ManyToOne
+//    @JoinColumn(name ="review_id", insertable = false, updatable = false)
+//    private Review review;
+
+    @OneToMany(mappedBy = "film",
+            cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Review> reviews;
+
+    //TEST NEEDED FOR public Film() , and both set<Actor>
 
     public Film(String title, String description, int release_year){
         this.title = title;
