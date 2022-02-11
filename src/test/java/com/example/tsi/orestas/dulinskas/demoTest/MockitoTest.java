@@ -45,14 +45,14 @@ public class MockitoTest {
         Assertions.assertEquals(expected,actual,"wrong");
     }
 
-    @Test
-    public void testGetLanguage(){
-            Review review1 = new Review ("Test1");
-            Review review2 = new Review ("Test2");
-            List<Review> reviews = new ArrayList<>();
-            reviews.add(review1);
-            reviews.add(review2);
-            when(sakilaDatabaseApplication.getAllFilms()).thenReturn(reviews);
-            Assertions.assertEquals(reviews,sakilaDatabaseApplication.getAllFilms(),"wrong");
-        }
+//    @Test
+//    public void testGetLanguage(){
+//            Review review1 = new Review ("Test1");
+//            Review review2 = new Review ("Test2");
+//            List<Review> reviews = new ArrayList<>();
+//            reviews.add(review1);
+//            reviews.add(review2);
+//            when(sakilaDatabaseApplication.getAllFilms()).thenReturn(reviews);
+//            Assertions.assertEquals(reviews,sakilaDatabaseApplication.getAllFilms(),"wrong");
+//        }
 }
