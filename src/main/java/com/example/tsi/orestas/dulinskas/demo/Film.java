@@ -1,12 +1,8 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,9 +27,11 @@ public class Film implements Serializable {
     private Set<Actor> actor = new HashSet<>();
 
     @OneToMany(mappedBy = "film")
-    private Set<Review> review = new HashSet<>();
+    private Set<Review> reviews = new HashSet<>();
 
     //TEST NEEDED FOR public Film() , and both set<Actor>
+
+    public Film(){}
 
     public Film(String title, String description, int release_year){
         this.title = title;
@@ -49,16 +47,12 @@ public class Film implements Serializable {
         this.actor = actor;
     }
 
-    public Set<Review> getReview(){
-        return review;
+    public Set<Review> getReviews(){
+        return reviews;
     }
 
-    public void setReview(Set<Review> review) {
-        this.review = review;
-    }
-
-    public Film(){
-
+    public void setReview(Set<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public int getFilm_id() {

@@ -6,29 +6,29 @@ import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class IsItLithuanian {
-    static String IsItLithuanian(String filmLanguage){
-        return "Lithuanian".equals(filmLanguage) ? "Yes" : "No";
+class viewReviews {
+    static String viewReviews(String filmReviews){
+        return "reviews".equals(filmReviews) ? "Yes" : "No";
     }
 }
 
 public class menuCucumberStepsDef {
-    public String filmLanguage;
+    public String filmReviews;
     public String actualAnswer;
 
-    @Given("I have chosen an {string} film")
-    public void i_have_chosen_a_film() {
-      filmLanguage = "English";
+    @Given("I want to view the reviews")
+    public void i_want_to_view_the_reviews() {
+        // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @When("Is the film {string}")
-    public void is_the_film(String string) {
-        actualAnswer = IsItLithuanian.IsItLithuanian(filmLanguage);
+    @When("I open the film reviews")
+    public void i_open_the_film_reviews() {
+        // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @Then("I should be told {string}")
-    public void i_should_be_told(String string) {
-        assertEquals(string, actualAnswer);
+    @Then("I should see the reviews")
+    public void i_should_see_the_reviews() {
+        // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
 

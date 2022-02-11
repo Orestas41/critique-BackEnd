@@ -55,15 +55,5 @@ public class Actor implements Serializable {
             this.last_name = last_name;
         }
 
-        // TEST NEEDED FOR ALL BELLOW
-
-//    public Set<Film> getFilms(){
-//        return films;
-//    }
-//
-//    public void setFilms(Set<Film> films){
-//        this.films = films;
-//    }
-
     }
 

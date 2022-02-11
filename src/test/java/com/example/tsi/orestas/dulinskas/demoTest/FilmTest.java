@@ -4,8 +4,16 @@ import com.example.tsi.orestas.dulinskas.demo.Film;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FilmTest {
+
+    private Film film = new Film();
+
+    @Test
+    public void test_constructor(){
+        assertTrue(film instanceof Film,"Its not an instance of Language");
+    }
 
     @Test
     public void test_film_id(){
