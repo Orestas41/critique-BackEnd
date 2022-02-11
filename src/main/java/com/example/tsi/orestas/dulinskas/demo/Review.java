@@ -14,6 +14,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int review_id;
     private int film_film_id;
+    private int customer_customer_id;
     private String customer_review;
 
     @ManyToOne
@@ -22,8 +23,9 @@ public class Review {
 
     public Review(){}
 
-    public Review(String customer_review, int film_film_id){
+    public Review(String customer_review, int film_film_id, int customer_customer_id){
         this.film_film_id =film_film_id;
+        this.customer_customer_id=customer_customer_id;
         this.customer_review = customer_review;}
 
     public int getReview_id() {
@@ -40,6 +42,14 @@ public class Review {
 
     public void setFilm_film_id(int film_film_id) {
         this.film_film_id = film_film_id;
+    }
+
+    public int getCustomer_customer_id() {
+        return customer_customer_id;
+    }
+
+    public void setCustomer_customer_id(int customer_customer_id) {
+        this.customer_customer_id = customer_customer_id;
     }
 
     public String getCustomer_review() {

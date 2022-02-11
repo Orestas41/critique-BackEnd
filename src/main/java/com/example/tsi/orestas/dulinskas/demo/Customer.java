@@ -1,10 +1,11 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
 
     @Id
@@ -13,6 +14,14 @@ public class Customer {
     private String first_name;
     private String last_name;
     private String email;
+
+    public Customer(String first_name, String last_name, String email){
+        this.first_name=first_name;
+        this.last_name=last_name;
+        this.email=email;
+    }
+
+    public Customer(){}
 
     public int getCustomer_id() {
         return customer_id;

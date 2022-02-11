@@ -64,8 +64,8 @@ public class SakilaDatabaseApplication {
 
 	@PostMapping("/AddReviews")
 	public @ResponseBody
-	String addReviews(@RequestParam int film_film_id, String customer_review){
-		Review addReviews=new Review(customer_review, film_film_id);
+	String addReviews(@RequestParam int film_film_id, int customer_customer_id, String customer_review){
+		Review addReviews=new Review(customer_review, film_film_id, customer_customer_id);
 		reviewRepository.save(addReviews);
 		return save;
 	}
