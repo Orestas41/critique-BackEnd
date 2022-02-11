@@ -20,17 +20,6 @@ public class Review {
     @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
     private Film film;
 
-//    @OneToMany(mappedBy = "review")
-//    private Set<Film> film = new HashSet<>();
-//
-//    public Set<Film> getFilm(){
-//        return film;
-//    }
-//
-//    public void setFilm(Set<Film> film) {
-//        this.film = film;
-//    }
-
     public Review(){}
 
     public Review(String customer_review, int film_film_id){

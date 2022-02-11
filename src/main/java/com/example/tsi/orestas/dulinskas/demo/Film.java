@@ -33,10 +33,6 @@ public class Film implements Serializable {
     @OneToMany(mappedBy = "film")
     private Set<Review> review = new HashSet<>();
 
-//    @ManyToOne
-//    @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
-//    private Film film;
-
     //TEST NEEDED FOR public Film() , and both set<Actor>
 
     public Film(String title, String description, int release_year){
@@ -96,4 +92,5 @@ public class Film implements Serializable {
     public void setRelease_year(int release_year) {
         this.release_year = release_year;
     }
+
 }
