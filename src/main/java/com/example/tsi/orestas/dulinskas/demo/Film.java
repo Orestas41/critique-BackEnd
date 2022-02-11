@@ -29,8 +29,6 @@ public class Film implements Serializable {
     @OneToMany(mappedBy = "film")
     private Set<Review> reviews = new HashSet<>();
 
-    //TEST NEEDED FOR public Film() , and both set<Actor>
-
     public Film(){}
 
     public Film(String title, String description, int release_year){

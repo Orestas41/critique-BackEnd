@@ -8,7 +8,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)//inhereting
 public class MockitoTest {
@@ -39,4 +44,15 @@ public class MockitoTest {
         reviewArgumentCaptor.getValue();
         Assertions.assertEquals(expected,actual,"wrong");
     }
+
+    @Test
+    public void testGetLanguage(){
+            Review review1 = new Review ("Test1");
+            Review review2 = new Review ("Test2");
+            List<Review> reviews = new ArrayList<>();
+            reviews.add(review1);
+            reviews.add(review2);
+            when(sakilaDatabaseApplication.getAllFilms()).thenReturn(reviews);
+            Assertions.assertEquals(reviews,sakilaDatabaseApplication.getAllFilms(),"wrong");
+        }
 }

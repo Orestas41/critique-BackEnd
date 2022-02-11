@@ -1,10 +1,11 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "review")
-public class Review {
+public class Review implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,9 +14,13 @@ public class Review {
     private int customer_customer_id;
     private String customer_review;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
     private Film film;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name ="customer_customer_id", insertable = false, nullable = false, updatable = false)
+    private Customer customer;
 
     public Review(){}
 
@@ -23,6 +28,9 @@ public class Review {
         this.film_film_id =film_film_id;
         this.customer_customer_id=customer_customer_id;
         this.customer_review = customer_review;}
+
+    public Review(String test1) {
+    }
 
     public int getReview_id() {
         return review_id;
