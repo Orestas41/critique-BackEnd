@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,13 +30,12 @@ public class Film implements Serializable {
                             nullable = false, updatable = false)})
     private Set<Actor> actor = new HashSet<>();
 
-//    @ManyToOne
-//    @JoinColumn(name ="review_id", insertable = false, updatable = false)
-//    private Review review;
+    @OneToMany(mappedBy = "film")
+    private Set<Review> review = new HashSet<>();
 
-    @OneToMany(mappedBy = "film",
-            cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Review> reviews;
+//    @ManyToOne
+//    @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
+//    private Film film;
 
     //TEST NEEDED FOR public Film() , and both set<Actor>
 
@@ -50,6 +51,14 @@ public class Film implements Serializable {
 
     public void setActor(Set<Actor> actor){
         this.actor = actor;
+    }
+
+    public Set<Review> getReview(){
+        return review;
+    }
+
+    public void setReview(Set<Review> review) {
+        this.review = review;
     }
 
     public Film(){

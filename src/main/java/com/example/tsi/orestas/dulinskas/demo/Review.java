@@ -3,6 +3,7 @@ package com.example.tsi.orestas.dulinskas.demo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,14 +16,20 @@ public class Review {
     private int film_film_id;
     private String customer_review;
 
-//    @OneToMany
-//    @JoinColumn(name ="review_id",insertable = false,updatable = false)
-//    @JsonIgnore
-//    private Set<Film> film;
-
-    @ManyToOne(fetch = FetchType.LAZY )
-    @JoinColumn(name ="film_id", insertable = false, nullable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name ="film_film_id", insertable = false, nullable = false, updatable = false)
     private Film film;
+
+//    @OneToMany(mappedBy = "review")
+//    private Set<Film> film = new HashSet<>();
+//
+//    public Set<Film> getFilm(){
+//        return film;
+//    }
+//
+//    public void setFilm(Set<Film> film) {
+//        this.film = film;
+//    }
 
     public Review(){}
 
