@@ -45,14 +45,51 @@ public class MockitoTest {
         Assertions.assertEquals(expected,actual,"wrong");
     }
 
-//    @Test
-//    public void testGetLanguage(){
-//            Review review1 = new Review ("Test1");
-//            Review review2 = new Review ("Test2");
-//            List<Review> reviews = new ArrayList<>();
-//            reviews.add(review1);
-//            reviews.add(review2);
-//            when(sakilaDatabaseApplication.getAllFilms()).thenReturn(reviews);
-//            Assertions.assertEquals(reviews,sakilaDatabaseApplication.getAllFilms(),"wrong");
-//        }
+    @Test
+    public void testGetReviews(){
+            Review review1 = new Review ("Test1", 1, 1);
+            Review review2 = new Review ("Test2", 2, 2);
+            List<Review> reviews = new ArrayList<>();
+            reviews.add(review1);
+            reviews.add(review2);
+            when(sakilaDatabaseApplication.getAllReview()).thenReturn(reviews);
+            Assertions.assertEquals(reviews,sakilaDatabaseApplication.getAllReview(),"wrong");
+        }
+
+    @Test
+    public void testGetFilms(){
+        Film film1 = new Film ("Test1", "Test1", 1);
+        Film film2 = new Film ("Test2", "Test2", 2);
+        List<Film> films = new ArrayList<>();
+        films.add(film1);
+        films.add(film2);
+        when(sakilaDatabaseApplication.getAllFilms()).thenReturn(films);
+        Assertions.assertEquals(films,sakilaDatabaseApplication.getAllFilms(),"wrong");
+    }
+
+
+
+    @Test
+    public void testGetCustomers(){
+        Customer customer1 = new Customer ("Test1", "Test1");
+        Customer customer2 = new Customer ("Test2", "Test2");
+        List<Customer> customers = new ArrayList<>();
+        customers.add(customer1);
+        customers.add(customer2);
+        when(sakilaDatabaseApplication.getAllCustomers()).thenReturn(customers);
+        Assertions.assertEquals(customers,sakilaDatabaseApplication.getAllCustomers(),"wrong");
+    }
+
+    @Test
+    public void testGetActors(){
+        Actor actor1 = new Actor ("Test1", "Test1");
+        Actor actor2 = new Actor ("Test2", "Test2");
+        List<Actor> actors = new ArrayList<>();
+        actors.add(actor1);
+        actors.add(actor1);
+        when(sakilaDatabaseApplication.getAllActor()).thenReturn(actors);
+        Assertions.assertEquals(actors,sakilaDatabaseApplication.getAllActor(),"wrong");
+    }
+
 }
+
