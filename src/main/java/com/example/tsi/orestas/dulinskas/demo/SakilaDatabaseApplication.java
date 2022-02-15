@@ -37,8 +37,6 @@ public class SakilaDatabaseApplication {
 
 	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
 
-	// TEST NEEDED FOR ALL @GETMAPPING
-
 	@GetMapping("/AllFilms")
 	public @ResponseBody
 	Iterable<Film>getAllFilms(){
@@ -74,13 +72,13 @@ public class SakilaDatabaseApplication {
 	@DeleteMapping("/RemoveReviews/{review_id}")
 	public @ResponseBody String removeReviewByID(@PathVariable int review_id){
 		reviewRepository.deleteById(review_id);
-		return "The review with ID "+review_id +" has been deleted";
+		return "The review has been deleted";
 	}
 
 	@PutMapping("/UpdateReviews/{review_id}")
 	public @ResponseBody
 	String updateReview(@PathVariable int review_id, @RequestParam String customer_review){
-		Review updateReview = reviewRepository.findById(review_id).orElseThrow(() ->new ResourceNotFoundException("Actor id not found"));
+		Review updateReview = reviewRepository.findById(review_id).orElseThrow(() ->new ResourceNotFoundException("Review id not found"));
 		updateReview.setCustomer_review(customer_review);
 //		final Review updatedReview = reviewRepository.save(updateReview);
 		return save;

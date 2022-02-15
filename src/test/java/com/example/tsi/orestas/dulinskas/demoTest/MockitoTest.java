@@ -86,10 +86,41 @@ public class MockitoTest {
         Actor actor2 = new Actor ("Test2", "Test2");
         List<Actor> actors = new ArrayList<>();
         actors.add(actor1);
-        actors.add(actor1);
+        actors.add(actor2);
         when(sakilaDatabaseApplication.getAllActor()).thenReturn(actors);
         Assertions.assertEquals(actors,sakilaDatabaseApplication.getAllActor(),"wrong");
     }
+    //////////////////////DELETE TEST
+
+    @Test
+    public void testDeleteReview(){
+//        Review oldReview = new Review("Test Review", 1, 1);
+//        String place = sakilaDatabaseApplication.addReviews(oldReview.getFilm_film_id(), oldReview.getCustomer_customer_id(), oldReview.getCustomer_review());
+//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
+//        reviewArgumentCaptor.getValue();
+        String actual = sakilaDatabaseApplication.removeReviewByID(1);
+        String expected = "The review has been deleted";
+        verify(reviewRepository).deleteById(1);
+        Assertions.assertEquals(expected,actual,"wrong");
+    }
+
+//////////////////UPDATE TEST
+//    @Test
+//    public void testUpdateReview() {
+//        Review oldReview = new Review("Test Review", 1, 1);
+//        String place = sakilaDatabaseApplication.addReviews(oldReview.getFilm_film_id(), oldReview.getCustomer_customer_id(), oldReview.getCustomer_review());
+//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
+//        reviewArgumentCaptor.getValue();
+//        Review updatedReview = new Review("Test Updated Review", 1, 1);
+//        String expected = "save";
+//        String actual = sakilaDatabaseApplication.updateReview(oldReview.getReview_id(), updatedReview.getCustomer_review());
+//        ArgumentCaptor<Review> updatedReviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(updatedReviewArgumentCaptor.capture());
+//        reviewArgumentCaptor.getValue();
+//        Assertions.assertEquals(expected, actual, "wrong");
+//    }
 
 }
 
