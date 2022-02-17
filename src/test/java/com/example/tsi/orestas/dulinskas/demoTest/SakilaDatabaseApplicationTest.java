@@ -6,8 +6,9 @@ import com.example.tsi.orestas.dulinskas.demo.Film;
 import com.example.tsi.orestas.dulinskas.demo.Review;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SakilaDatabaseApplicationTest {
 
@@ -104,5 +105,4 @@ public class SakilaDatabaseApplicationTest {
         review.setCustomer_customer_id(1);
         assertEquals(1, review.getCustomer_customer_id(), "wrong");
     }
-
 }

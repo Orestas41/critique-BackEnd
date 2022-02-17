@@ -1,11 +1,9 @@
 package com.example.tsi.orestas.dulinskas.demo;
 
-import org.apache.velocity.exception.ResourceNotFoundException;
+import com.amazonaws.services.secretsmanager.model.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -36,7 +34,7 @@ public class SakilaDatabaseApplication {
 		this.reviewRepository=reviewRepository;
 		this.actorRepository=actorRepository;
 	}
-
+	//TEST--
 	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
 
 	@GetMapping("/AllFilms")
@@ -44,7 +42,7 @@ public class SakilaDatabaseApplication {
 	Iterable<Film>getAllFilms(){
 		return filmRepository.findAll();
 	}
-
+	//TEST--
 	@GetMapping("/Film/{film_id}")
 	public @ResponseBody
 	Optional<Film> getFilmById(@PathVariable int film_id){
@@ -76,7 +74,7 @@ public class SakilaDatabaseApplication {
 		reviewRepository.deleteById(review_id);
 		return "The review has been deleted";
 	}
-
+	//TEST--
 	@PutMapping("/UpdateReviews/{review_id}")
 	public @ResponseBody
 	String updateReview(@PathVariable int review_id, @RequestParam String customer_review){

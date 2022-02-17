@@ -29,9 +29,6 @@ public class Review implements Serializable {
         this.customer_customer_id=customer_customer_id;
         this.customer_review = customer_review;}
 
-    public Review(String test1) {
-    }
-
     public int getReview_id() {
         return review_id;
     }
