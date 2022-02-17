@@ -61,6 +61,12 @@ public class SakilaDatabaseApplication {
 		return reviewRepository.findAll();
 	}
 
+	@GetMapping("/AllActors")
+	public @ResponseBody
+	Iterable<Actor>getAllActor(){
+		return actorRepository.findAll();
+	}
+
 	@PostMapping("/AddReviews")
 	public @ResponseBody
 	String addReviews(@RequestParam int film_film_id, int customer_customer_id, String customer_review){
@@ -83,11 +89,4 @@ public class SakilaDatabaseApplication {
 		final Review updatedReview = reviewRepository.save(updateReview);
 		return save;
 	}
-
-	@GetMapping("/AllActors")
-	public @ResponseBody
-	Iterable<Actor>getAllActor(){
-		return actorRepository.findAll();
-	}
-
 }

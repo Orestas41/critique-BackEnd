@@ -91,8 +91,6 @@ class MockitoTest {
         Assertions.assertEquals(actors,sakilaDatabaseApplication.getAllActor(),"wrong");
     }
 
-
-    //////////////////////DELETE TEST
     @Test
     void testDeleteReview(){
         String actual = sakilaDatabaseApplication.removeReviewByID(1);
@@ -104,8 +102,10 @@ class MockitoTest {
     //////////////////////GET FILM BY ID TEST
     @Test
     void testGetFilmById(){
-        Optional<Film> actual = sakilaDatabaseApplication.getFilmById(1);
-        Assertions.assertEquals(sakilaDatabaseApplication.getFilmById(1), actual,"wrong");
+        Film film = new Film("Test", "Test", 1);
+        when(sakilaDatabaseApplication.getFilmById(0)).thenReturn(Optional.of(film));
+        Assertions.assertEquals(Optional.of(film),
+                sakilaDatabaseApplication.getFilmById(0),"wrong");
     }
 }
 
