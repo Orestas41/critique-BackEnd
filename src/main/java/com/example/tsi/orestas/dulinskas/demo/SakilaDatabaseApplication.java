@@ -86,7 +86,7 @@ public class SakilaDatabaseApplication {
 	String updateReview(@PathVariable int review_id, @RequestParam String customer_review){
 		Review updateReview = reviewRepository.findById(review_id).orElseThrow(() ->new ResourceNotFoundException("Review id not found"));
 		updateReview.setCustomer_review(customer_review);
-		final Review updatedReview = reviewRepository.save(updateReview);
+//		final Review updatedReview = reviewRepository.save(updateReview);
 		return save;
 	}
 }
