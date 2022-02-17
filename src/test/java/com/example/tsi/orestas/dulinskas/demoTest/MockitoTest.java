@@ -8,15 +8,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)//inhereting
-public class MockitoTest {
+class MockitoTest {
     private SakilaDatabaseApplication sakilaDatabaseApplication;
     @Mock
     private FilmRepository filmRepository;
@@ -34,7 +36,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testAddReview(){
+    void testAddReview(){
         Review savedReview = new Review("Test Review", 1,1);
         String expected = "save";
         String actual = sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
@@ -46,7 +48,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testGetReviews(){
+    void testGetReviews(){
             Review review1 = new Review ("Test1", 1, 1);
             Review review2 = new Review ("Test2", 2, 2);
             List<Review> reviews = new ArrayList<>();
@@ -57,7 +59,7 @@ public class MockitoTest {
         }
 
     @Test
-    public void testGetFilms(){
+    void testGetFilms(){
         Film film1 = new Film ("Test1", "Test1", 1);
         Film film2 = new Film ("Test2", "Test2", 2);
         List<Film> films = new ArrayList<>();
@@ -67,10 +69,8 @@ public class MockitoTest {
         Assertions.assertEquals(films,sakilaDatabaseApplication.getAllFilms(),"wrong");
     }
 
-
-
     @Test
-    public void testGetCustomers(){
+    void testGetCustomers(){
         Customer customer1 = new Customer ("Test1", "Test1");
         Customer customer2 = new Customer ("Test2", "Test2");
         List<Customer> customers = new ArrayList<>();
@@ -81,7 +81,7 @@ public class MockitoTest {
     }
 
     @Test
-    public void testGetActors(){
+    void testGetActors(){
         Actor actor1 = new Actor ("Test1", "Test1");
         Actor actor2 = new Actor ("Test2", "Test2");
         List<Actor> actors = new ArrayList<>();
@@ -90,37 +90,22 @@ public class MockitoTest {
         when(sakilaDatabaseApplication.getAllActor()).thenReturn(actors);
         Assertions.assertEquals(actors,sakilaDatabaseApplication.getAllActor(),"wrong");
     }
-    //////////////////////DELETE TEST
 
+
+    //////////////////////DELETE TEST
     @Test
-    public void testDeleteReview(){
-//        Review oldReview = new Review("Test Review", 1, 1);
-//        String place = sakilaDatabaseApplication.addReviews(oldReview.getFilm_film_id(), oldReview.getCustomer_customer_id(), oldReview.getCustomer_review());
-//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
-//        reviewArgumentCaptor.getValue();
+    void testDeleteReview(){
         String actual = sakilaDatabaseApplication.removeReviewByID(1);
         String expected = "The review has been deleted";
         verify(reviewRepository).deleteById(1);
         Assertions.assertEquals(expected,actual,"wrong");
     }
 
-//////////////////UPDATE TEST
-//    @Test
-//    public void testUpdateReview() {
-//        Review oldReview = new Review("Test Review", 1, 1);
-//        String place = sakilaDatabaseApplication.addReviews(oldReview.getFilm_film_id(), oldReview.getCustomer_customer_id(), oldReview.getCustomer_review());
-//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
-//        reviewArgumentCaptor.getValue();
-//        Review updatedReview = new Review("Test Updated Review", 1, 1);
-//        String expected = "save";
-//        String actual = sakilaDatabaseApplication.updateReview(oldReview.getReview_id(), updatedReview.getCustomer_review());
-//        ArgumentCaptor<Review> updatedReviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(updatedReviewArgumentCaptor.capture());
-//        reviewArgumentCaptor.getValue();
-//        Assertions.assertEquals(expected, actual, "wrong");
-//    }
-
+    //////////////////////GET FILM BY ID TEST
+    @Test
+    void testGetFilmById(){
+        Optional<Film> actual = sakilaDatabaseApplication.getFilmById(1);
+        Assertions.assertEquals(sakilaDatabaseApplication.getFilmById(1), actual,"wrong");
+    }
 }
 
