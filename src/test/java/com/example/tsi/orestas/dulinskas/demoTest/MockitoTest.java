@@ -95,11 +95,12 @@ class MockitoTest {
     void testDeleteReview(){
         String actual = sakilaDatabaseApplication.removeReviewByID(1);
         String expected = "The review has been deleted";
-        verify(reviewRepository).deleteById(1);
+        ArgumentCaptor<Integer> reviewArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(reviewRepository).deleteById(reviewArgumentCaptor.capture());
+        reviewArgumentCaptor.getValue();
         Assertions.assertEquals(expected,actual,"wrong");
     }
 
-    //////////////////////GET FILM BY ID TEST
     @Test
     void testGetFilmById(){
         Film film = new Film("Test", "Test", 1);
@@ -107,5 +108,7 @@ class MockitoTest {
         Assertions.assertEquals(Optional.of(film),
                 sakilaDatabaseApplication.getFilmById(0),"wrong");
     }
+
+    /////////////TEST UPDATING REVIEW
 }
 
