@@ -1,11 +1,9 @@
 package com.example.tsi.orestas.dulinskas.demoTest;
 
-import com.example.tsi.orestas.dulinskas.demo.Actor;
-import com.example.tsi.orestas.dulinskas.demo.Customer;
-import com.example.tsi.orestas.dulinskas.demo.Film;
-import com.example.tsi.orestas.dulinskas.demo.Review;
+import com.example.tsi.orestas.dulinskas.demo.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,10 +15,13 @@ class SakilaDatabaseApplicationTest {
     private Actor actor = new Actor();
     private Review review = new Review();
 
-    @Test
-    void test_constructor(){
-        assertTrue(film instanceof Film,"Its not an instance of Language");
-    }
+    private Set<Actor> testActorSet = new HashSet<>();
+    private Set<Review> testReviewSet = new HashSet<>();
+
+//    @Test
+//    void test_main(){
+//        assertTrue( instanceof SakilaDatabaseApplication,"Its not an instance of Language");
+//    }
 
     @Test
     void test_film_id(){
@@ -105,4 +106,26 @@ class SakilaDatabaseApplicationTest {
         review.setCustomer_customer_id(1);
         assertEquals(1, review.getCustomer_customer_id(), "wrong");
     }
+
+    @Test
+    void test_getReviewsForFilms(){
+        testReviewSet.add(new Review("Test",1,1));
+        film.setReview(testReviewSet);
+        assertEquals(testReviewSet,film.getReviews(),"failed");
+    }
+
+    @Test
+    public void test_getActorForFilms(){
+        testActorSet.add(new Actor("Rocco","Rain"));
+        film.setActor(testActorSet);
+        assertEquals(testActorSet,film.getActor(),"wrong");
+    }
+
+    @Test
+    void test_getReviewsFromCustomers(){
+        testReviewSet.add(new Review("Test",1,1));
+        customer.setReview(testReviewSet);
+        assertEquals(testReviewSet,customer.getReviews(),"failed");
+    }
+
 }

@@ -109,6 +109,17 @@ class MockitoTest {
                 sakilaDatabaseApplication.getFilmById(0),"wrong");
     }
 
-    /////////////TEST UPDATING REVIEW
+//    /////////////TEST UPDATING REVIEW
+//    @Test
+//    void testUpdatingReview() {
+//        when(sakilaDatabaseApplication.getReviewId[(Mockito.any())).thenReturn(getValidSongDto());
+//        when(songService.updateSong(anyInt(), any(SongDto.class))).thenReturn(getValidSongDto());
+//        String songDtoJson = objectMapper.writeValueAsString(getValidSongDto());
+//        mockMvc.perform(put("/rest/v1/songs/1")
+//                        .content(songDtoJson)
+//                        .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isNoContent());
+//    }
+
 }
 

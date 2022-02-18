@@ -60,31 +60,31 @@ public class menuCucumberStepsDef {
         reviewArgumentCaptor.getValue();
     }
 
-    Review oldReview;
-    Review updatedReview;
+//    Review oldReview;
+//    Review updatedReview;
 
-    @Given("We want to update review")
-    public void chooseToUpdateReview()
-    {
-        setup();
-        oldReview = new Review("Old Review", 1,1);
-        updatedReview = new Review("Test Review",2,2);
-    }
-    @When("We update a review")
-    public void updateReview()
-    {
-        actual = sakilaDatabaseApplication.updateReview(1,
-                updatedReview.getCustomer_review());
-    }
-    @Then("Review should be updated")
-    public void checkReviewIsUpdated() {
-        String expected = "save";
-        Assertions.assertEquals(expected,actual,"Update failed");
-
-        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-        verify(reviewRepository).save(reviewArgumentCaptor.capture());
-        reviewArgumentCaptor.getValue();
-    }
+//    @Given("We want to update review")
+//    public void chooseToUpdateReview()
+//    {
+//        setup();
+//        oldReview = new Review("Old Review", 1,1);
+//        updatedReview = new Review("Test Review",2,2);
+//    }
+//    @When("We update a review")
+//    public void updateReview()
+//    {
+//        actual = sakilaDatabaseApplication.updateReview(1,
+//                updatedReview.getCustomer_review());
+//    }
+//    @Then("Review should be updated")
+//    public void checkReviewIsUpdated() {
+//        String expected = "save";
+//        Assertions.assertEquals(expected,actual,"Update failed");
+//
+//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
+//        reviewArgumentCaptor.getValue();
+//    }
 
     int reviewID;
 
