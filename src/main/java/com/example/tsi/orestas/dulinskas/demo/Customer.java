@@ -24,9 +24,9 @@ public class Customer implements Serializable {
         this.first_name=first_name;
         this.last_name=last_name;
     }
-    //TEST--
+
     public Set<Review> getReviews(){return reviews;}
-    //TEST--
+
     public void setReview(Set<Review> reviews) {this.reviews = reviews;}
 
     public int getCustomer_id() {

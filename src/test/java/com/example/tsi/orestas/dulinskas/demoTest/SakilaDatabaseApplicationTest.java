@@ -18,11 +18,6 @@ class SakilaDatabaseApplicationTest {
     private Set<Actor> testActorSet = new HashSet<>();
     private Set<Review> testReviewSet = new HashSet<>();
 
-//    @Test
-//    void test_main(){
-//        assertTrue( instanceof SakilaDatabaseApplication,"Its not an instance of Language");
-//    }
-
     @Test
     void test_film_id(){
         film.setFilm_id(1);
@@ -115,7 +110,7 @@ class SakilaDatabaseApplicationTest {
     }
 
     @Test
-    public void test_getActorForFilms(){
+    void test_getActorForFilms(){
         testActorSet.add(new Actor("Rocco","Rain"));
         film.setActor(testActorSet);
         assertEquals(testActorSet,film.getActor(),"wrong");

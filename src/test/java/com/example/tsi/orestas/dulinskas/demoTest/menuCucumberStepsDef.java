@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class menuCucumberStepsDef {
 
@@ -33,6 +32,8 @@ public class menuCucumberStepsDef {
         sakilaDatabaseApplication=new SakilaDatabaseApplication(filmRepository,
                 customerRepository,reviewRepository,actorRepository);
     }
+
+    ////////////////////////////////////ADDING REVIEW
 
     Review savedReview;
 
@@ -60,6 +61,8 @@ public class menuCucumberStepsDef {
         reviewArgumentCaptor.getValue();
     }
 
+    /////////////////////////////////////////UPDATING REVIEW
+
 //    Review oldReview;
 //    Review updatedReview;
 
@@ -86,6 +89,8 @@ public class menuCucumberStepsDef {
 //        reviewArgumentCaptor.getValue();
 //    }
 
+    //////////////////////////////////////DELETING REVIEW
+
     int reviewID;
 
     @Given("We want to delete a review")
@@ -109,5 +114,28 @@ public class menuCucumberStepsDef {
         verify(reviewRepository).deleteById(reviewArgumentCaptor.capture());
         reviewArgumentCaptor.getValue();
     }
+
+    /////////////////////////////////////View film details and its reviews
+
+    int filmId;
+
+    @Given("The id for a film we are interested in is {int}")
+    public void id_for_film(Integer id)
+    {
+        setup();
+    }
+    @When("We enter film id")
+    public void enter_film_id()
+    {
+        sakilaDatabaseApplication.getFilmById(filmId);
+    }
+    @Then("film details and its reviews will be shown")
+    public void filmAndReviews()
+    {
+        ArgumentCaptor<Integer> filmArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(filmRepository).findById(filmArgumentCaptor.capture());
+        filmArgumentCaptor.getValue();
+    }
+
 
 }

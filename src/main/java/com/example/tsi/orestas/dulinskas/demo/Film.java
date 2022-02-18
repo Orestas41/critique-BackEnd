@@ -36,13 +36,13 @@ public class Film implements Serializable {
         this.description=description;
         this.release_year=release_year;
     }
-    //TEST--
+
     public Set<Actor> getActor(){return actor;}
-    //TEST--
+
     public void setActor(Set<Actor> actor){this.actor = actor;}
-    //TEST--
+
     public Set<Review> getReviews(){return reviews;}
-    //TEST--
+
     public void setReview(Set<Review> reviews) {this.reviews = reviews;}
 
     public int getFilm_id() {

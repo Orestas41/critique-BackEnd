@@ -14,3 +14,8 @@ Feature: Test Review features
     Given We want to delete a review
     When  We delete a review
     Then  Review should be deleted
+
+  Scenario: View film details and its reviews by film id
+    Given The id for a film we are interested in is 1
+    When  We enter film id
+    Then  film details and its reviews will be shown
