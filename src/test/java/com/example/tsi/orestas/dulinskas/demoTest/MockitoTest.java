@@ -17,7 +17,7 @@ import java.util.Optional;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)//inhereting
+@ExtendWith(MockitoExtension.class)
 class MockitoTest {
     private SakilaDatabaseApplication sakilaDatabaseApplication;
     @Mock
@@ -37,10 +37,10 @@ class MockitoTest {
 
     @Test
     void testAddReview(){
-        Review savedReview = new Review("Test Review", 1,1);
+        Review saveReview = new Review("Test Review", 1);
         String expected = "save";
-        String actual = sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
-                savedReview.getCustomer_customer_id(),savedReview.getCustomer_review());
+        String actual = sakilaDatabaseApplication.addReviews(saveReview.getFilm_film_id(),
+                saveReview.getCustomer_review());
         ArgumentCaptor<Review>reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
         verify(reviewRepository).save(reviewArgumentCaptor.capture());
         reviewArgumentCaptor.getValue();
@@ -49,8 +49,8 @@ class MockitoTest {
 
     @Test
     void testGetReviews(){
-            Review review1 = new Review ("Test1", 1, 1);
-            Review review2 = new Review ("Test2", 2, 2);
+            Review review1 = new Review ("Test1", 1);
+            Review review2 = new Review ("Test2", 2);
             List<Review> reviews = new ArrayList<>();
             reviews.add(review1);
             reviews.add(review2);
@@ -109,16 +109,16 @@ class MockitoTest {
                 sakilaDatabaseApplication.getFilmById(0),"wrong");
     }
 
-//    /////////////TEST UPDATING REVIEW
 //    @Test
 //    void testUpdatingReview() {
-//        when(sakilaDatabaseApplication.getReviewId[(Mockito.any())).thenReturn(getValidSongDto());
-//        when(songService.updateSong(anyInt(), any(SongDto.class))).thenReturn(getValidSongDto());
-//        String songDtoJson = objectMapper.writeValueAsString(getValidSongDto());
-//        mockMvc.perform(put("/rest/v1/songs/1")
-//                        .content(songDtoJson)
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isNoContent());
+//        Review savedReview = new Review("Test Review",1);
+//        Review updatedReview = new Review("New Review",1);
+//        String actual = sakilaDatabaseApplication.updateReview(1,updatedReview.getCustomer_review());
+//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
+//        reviewArgumentCaptor.getValue();
+//        String expected = updatedReview.getCustomer_review();
+//        Assertions.assertEquals(expected,actual,"Save failed");
 //    }
 
 }

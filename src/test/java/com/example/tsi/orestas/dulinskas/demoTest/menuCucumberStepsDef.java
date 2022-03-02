@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import io.restassured.response.Response;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
@@ -14,15 +15,17 @@ public class menuCucumberStepsDef {
 
     private SakilaDatabaseApplication sakilaDatabaseApplication;
     @Mock
-            private ReviewRepository reviewRepository;
+    private ReviewRepository reviewRepository;
     @Mock
-            private FilmRepository filmRepository;
+    private FilmRepository filmRepository;
     @Mock
-            private CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
     @Mock
-            private ActorRepository actorRepository;
+    private ActorRepository actorRepository;
 
+    Response response;
     String actual;
+    String failed;
     void setup()
     {
         reviewRepository=mock(ReviewRepository.class);
@@ -36,106 +39,78 @@ public class menuCucumberStepsDef {
     ////////////////////////////////////ADDING REVIEW
 
     Review savedReview;
+    Review failedReview;
 
-    @Given("We want to review a film")
-    public void chooseFilmToReview()
-    {
+    @Given("I have supplied a review")
+    public void i_have_supplied_a_review() {
         setup();
-        savedReview = new Review("Test Review",1,1);
+        savedReview = new Review("Test Review",1);
     }
-
-    @When("We review a film")
-    public void addReview()
-    {
-        actual = sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
-                savedReview.getCustomer_customer_id(),savedReview.getCustomer_review());
-    }
-    @Then("Review should be added")
-    public void checkReviewAdded()
-    {
-        String expected = "save";
-        Assertions.assertEquals(expected,actual,"Save failed");
-
+    @When("I save a review")
+    public void i_save_a_review() {
+        actual = sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),savedReview.getCustomer_review());
         ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
         verify(reviewRepository).save(reviewArgumentCaptor.capture());
         reviewArgumentCaptor.getValue();
     }
-
-    /////////////////////////////////////////UPDATING REVIEW
-
-//    Review oldReview;
-//    Review updatedReview;
-
-//    @Given("We want to update review")
-//    public void chooseToUpdateReview()
-//    {
-//        setup();
-//        oldReview = new Review("Old Review", 1,1);
-//        updatedReview = new Review("Test Review",2,2);
-//    }
-//    @When("We update a review")
-//    public void updateReview()
-//    {
-//        actual = sakilaDatabaseApplication.updateReview(1,
-//                updatedReview.getCustomer_review());
-//    }
-//    @Then("Review should be updated")
-//    public void checkReviewIsUpdated() {
-//        String expected = "save";
-//        Assertions.assertEquals(expected,actual,"Update failed");
-//
-//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
-//        reviewArgumentCaptor.getValue();
-//    }
+    @Then("I receive a save confirmation")
+    public void i_receive_a_save_confirmation() {
+        String expected = "save";
+        Assertions.assertEquals(expected,actual,"Save failed");
+    }
 
     //////////////////////////////////////DELETING REVIEW
 
     int reviewID;
 
-    @Given("We want to delete a review")
-    public void chooeseToDeleteReview()
-    {
+    @Given("I have supplied a review id")
+    public void i_have_supplied_a_review_id() {
         setup();
         reviewID = 1;
     }
-    @When("We delete a review")
-    public void DeleteReview()
-    {
+    @When("I delete a review")
+    public void i_delete_a_review() {
         actual = sakilaDatabaseApplication.removeReviewByID(1);
-    }
-    @Then("Review should be deleted")
-    public void checkReviewDeleted()
-    {
-        String expected = "The review has been deleted";
-        Assertions.assertEquals(expected,actual,"Review failed to be deleted");
-
         ArgumentCaptor<Integer> reviewArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
         verify(reviewRepository).deleteById(reviewArgumentCaptor.capture());
         reviewArgumentCaptor.getValue();
     }
-
-    /////////////////////////////////////View film details and its reviews
-
-    int filmId;
-
-    @Given("The id for a film we are interested in is {int}")
-    public void id_for_film(Integer id)
-    {
-        setup();
-    }
-    @When("We enter film id")
-    public void enter_film_id()
-    {
-        sakilaDatabaseApplication.getFilmById(filmId);
-    }
-    @Then("film details and its reviews will be shown")
-    public void filmAndReviews()
-    {
-        ArgumentCaptor<Integer> filmArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
-        verify(filmRepository).findById(filmArgumentCaptor.capture());
-        filmArgumentCaptor.getValue();
+    @Then("I receive a delete confirmation")
+    public void i_receive_a_delete_confirmation() {
+        String expected = "The review has been deleted";
+        Assertions.assertEquals(expected,actual,"Review failed to be deleted");
     }
 
+    /////////////////////////////////////////UPDATING REVIEW
+//
+//    Review oldReview;
+//    String amendedReview;
+//    int reviewId;
+//    Review updatedReview;
+//
+//    @Given("I have supplied a review id for update")
+//    public void i_have_supplied_a_review_id_for_update() {
+//        setup();
+//        oldReview = new Review("Old Review", 1);
+//        reviewId = 1;
+//    }
+//    @Given("I have supplied amended review")
+//    public void i_have_supplied_amended_review() {
+//        amendedReview = "Test Review";
+//    }
+//    @When("I save updated review")
+//    public void i_save_updated_review() {
+//        updatedReview = new Review(amendedReview,reviewID);
+//        actual = sakilaDatabaseApplication.updateReview(0,
+//                updatedReview.getCustomer_review());
+//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
+//        reviewArgumentCaptor.getValue();
+//    }
+//    @Then("I receive an update saved confirmation")
+//    public void i_receive_an_update_saved_confirmation() {
+//        String expected = "save";
+//        Assertions.assertEquals(expected,actual,"Update failed");
+//    }
 
 }

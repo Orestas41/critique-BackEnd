@@ -6,9 +6,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.Optional;
 
 //https://localhost:8080/HomePage/All..
+@CrossOrigin(origins = "*")
 @SpringBootApplication
 @RestController
 @RequestMapping("/HomePage")
@@ -70,8 +72,8 @@ public class SakilaDatabaseApplication {
 
 	@PostMapping("/AddReviews")
 	public @ResponseBody
-	String addReviews(@RequestParam int film_film_id, int customer_customer_id, String customer_review){
-		Review addReviews=new Review(customer_review, film_film_id, customer_customer_id);
+	String addReviews(@RequestParam int film_film_id, String customer_review){
+		Review addReviews=new Review(customer_review, film_film_id);
 		reviewRepository.save(addReviews);
 		return save;
 	}
@@ -87,7 +89,7 @@ public class SakilaDatabaseApplication {
 	String updateReview(@PathVariable int review_id, @RequestParam String customer_review){
 		Review updateReview = reviewRepository.findById(review_id).orElseThrow(() ->new ResourceNotFoundException("Review id not found"));
 		updateReview.setCustomer_review(customer_review);
-//		final Review updatedReview = reviewRepository.save(updateReview);
-		return save;
+		final Review updatedReview = reviewRepository.save(updateReview);
+		return updatedReview.getCustomer_review();
 	}
 }

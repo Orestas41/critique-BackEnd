@@ -15,19 +15,12 @@ public class Customer implements Serializable {
     private String first_name;
     private String last_name;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Review> reviews = new HashSet<>();
-
     public Customer(){}
 
     public Customer(String first_name, String last_name){
         this.first_name=first_name;
         this.last_name=last_name;
     }
-
-    public Set<Review> getReviews(){return reviews;}
-
-    public void setReview(Set<Review> reviews) {this.reviews = reviews;}
 
     public int getCustomer_id() {
         return customer_id;

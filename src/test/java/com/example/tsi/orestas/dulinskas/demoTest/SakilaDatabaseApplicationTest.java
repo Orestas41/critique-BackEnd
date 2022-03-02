@@ -97,14 +97,8 @@ class SakilaDatabaseApplicationTest {
     }
 
     @Test
-     void test_customer_customer_id(){
-        review.setCustomer_customer_id(1);
-        assertEquals(1, review.getCustomer_customer_id(), "wrong");
-    }
-
-    @Test
     void test_getReviewsForFilms(){
-        testReviewSet.add(new Review("Test",1,1));
+        testReviewSet.add(new Review("Test",1));
         film.setReview(testReviewSet);
         assertEquals(testReviewSet,film.getReviews(),"failed");
     }
@@ -114,13 +108,6 @@ class SakilaDatabaseApplicationTest {
         testActorSet.add(new Actor("Rocco","Rain"));
         film.setActor(testActorSet);
         assertEquals(testActorSet,film.getActor(),"wrong");
-    }
-
-    @Test
-    void test_getReviewsFromCustomers(){
-        testReviewSet.add(new Review("Test",1,1));
-        customer.setReview(testReviewSet);
-        assertEquals(testReviewSet,customer.getReviews(),"failed");
     }
 
 }
