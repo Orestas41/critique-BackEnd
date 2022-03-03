@@ -9,6 +9,9 @@ import io.restassured.response.Response;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.*;
 
 public class menuCucumberStepsDef {
@@ -25,7 +28,6 @@ public class menuCucumberStepsDef {
 
     Response response;
     String actual;
-    String failed;
     void setup()
     {
         reviewRepository=mock(ReviewRepository.class);
@@ -36,10 +38,30 @@ public class menuCucumberStepsDef {
                 customerRepository,reviewRepository,actorRepository);
     }
 
+    ////////////////////////////////////VIEW REVIEWS
+
+    List<Review> reviews = new ArrayList<>();
+
+    @Given("film has reviews")
+    public void film_has_reviews() {
+        Review review1 = new Review ("Test1", 1);
+        Review review2 = new Review ("Test2", 2);
+        reviews.add(review1);
+        reviews.add(review2);
+
+    }
+    @When("I open the website")
+    public void i_open_the_website() {
+        when(sakilaDatabaseApplication.getAllReview()).thenReturn(reviews);
+    }
+    @Then("film reviews will be on display")
+    public void film_reviews_will_be_on_display() {
+        Assertions.assertEquals(reviews,sakilaDatabaseApplication.getAllReview(),"wrong");
+    }
+
     ////////////////////////////////////ADDING REVIEW
 
     Review savedReview;
-    Review failedReview;
 
     @Given("I have supplied a review")
     public void i_have_supplied_a_review() {

@@ -111,12 +111,17 @@ class MockitoTest {
 
 //    @Test
 //    void testUpdatingReview() {
-//        Review savedReview = new Review("Test Review",1);
+//        Review savedReview = new Review("Test Review", 1);
 //        Review updatedReview = new Review("New Review",1);
-//        String actual = sakilaDatabaseApplication.updateReview(1,updatedReview.getCustomer_review());
-//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
+//                savedReview.getCustomer_review());
+//        ArgumentCaptor<Review>reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
 //        verify(reviewRepository).save(reviewArgumentCaptor.capture());
 //        reviewArgumentCaptor.getValue();
+//        String actual = sakilaDatabaseApplication.updateReview(0, updatedReview.getCustomer_review());
+//        ArgumentCaptor<Review> reviewUpdateArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+//        verify(reviewRepository).save(reviewUpdateArgumentCaptor.capture());
+//        reviewUpdateArgumentCaptor.getValue();
 //        String expected = updatedReview.getCustomer_review();
 //        Assertions.assertEquals(expected,actual,"Save failed");
 //    }
