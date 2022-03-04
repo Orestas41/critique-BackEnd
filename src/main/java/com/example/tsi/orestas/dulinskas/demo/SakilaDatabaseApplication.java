@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://3.88.31.41:8080/HomePage/")
+//@CrossOrigin(origins = "http://3.88.31.41:8080/HomePage/")
 @SpringBootApplication
 @RestController
 @RequestMapping("/HomePage")
@@ -36,7 +36,6 @@ public class SakilaDatabaseApplication {
 		this.actorRepository=actorRepository;
 	}
 
-	//TEST--
 	public static void main(String[] args) {SpringApplication.run(SakilaDatabaseApplication.class, args);}
 
 	@GetMapping("/AllFilms")
@@ -82,7 +81,7 @@ public class SakilaDatabaseApplication {
 		reviewRepository.deleteById(review_id);
 		return "The review has been deleted";
 	}
-	//TEST--
+
 	@PutMapping("/UpdateReviews/{review_id}")
 	public @ResponseBody
 	String updateReview(@PathVariable int review_id, @RequestParam String customer_review){

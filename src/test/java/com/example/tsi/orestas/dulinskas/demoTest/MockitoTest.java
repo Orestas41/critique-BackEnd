@@ -8,7 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,23 +107,6 @@ class MockitoTest {
         Assertions.assertEquals(Optional.of(film),
                 sakilaDatabaseApplication.getFilmById(0),"wrong");
     }
-
-//    @Test
-//    void testUpdatingReview() {
-//        Review savedReview = new Review("Test Review", 1);
-//        Review updatedReview = new Review("New Review",1);
-//        sakilaDatabaseApplication.addReviews(savedReview.getFilm_film_id(),
-//                savedReview.getCustomer_review());
-//        ArgumentCaptor<Review>reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
-//        reviewArgumentCaptor.getValue();
-//        String actual = sakilaDatabaseApplication.updateReview(0, updatedReview.getCustomer_review());
-//        ArgumentCaptor<Review> reviewUpdateArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(reviewUpdateArgumentCaptor.capture());
-//        reviewUpdateArgumentCaptor.getValue();
-//        String expected = updatedReview.getCustomer_review();
-//        Assertions.assertEquals(expected,actual,"Save failed");
-//    }
 
 }
 

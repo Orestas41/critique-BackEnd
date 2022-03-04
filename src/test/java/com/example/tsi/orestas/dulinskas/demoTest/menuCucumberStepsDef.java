@@ -48,10 +48,10 @@ public class menuCucumberStepsDef {
         Review review2 = new Review ("Test2", 2);
         reviews.add(review1);
         reviews.add(review2);
-
     }
     @When("I open the website")
     public void i_open_the_website() {
+
         when(sakilaDatabaseApplication.getAllReview()).thenReturn(reviews);
     }
     @Then("film reviews will be on display")
@@ -104,35 +104,35 @@ public class menuCucumberStepsDef {
     }
 
     /////////////////////////////////////////UPDATING REVIEW
-//
-//    Review oldReview;
-//    String amendedReview;
-//    int reviewId;
-//    Review updatedReview;
-//
-//    @Given("I have supplied a review id for update")
-//    public void i_have_supplied_a_review_id_for_update() {
-//        setup();
-//        oldReview = new Review("Old Review", 1);
-//        reviewId = 1;
-//    }
-//    @Given("I have supplied amended review")
-//    public void i_have_supplied_amended_review() {
-//        amendedReview = "Test Review";
-//    }
-//    @When("I save updated review")
-//    public void i_save_updated_review() {
-//        updatedReview = new Review(amendedReview,reviewID);
-//        actual = sakilaDatabaseApplication.updateReview(0,
-//                updatedReview.getCustomer_review());
-//        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
-//        verify(reviewRepository).save(reviewArgumentCaptor.capture());
-//        reviewArgumentCaptor.getValue();
-//    }
-//    @Then("I receive an update saved confirmation")
-//    public void i_receive_an_update_saved_confirmation() {
-//        String expected = "save";
-//        Assertions.assertEquals(expected,actual,"Update failed");
-//    }
+
+    Review oldReview;
+    String amendedReview;
+    int reviewId;
+    Review updatedReview;
+
+    @Given("I have supplied a review id for update")
+    public void i_have_supplied_a_review_id_for_update() {
+        setup();
+        oldReview = new Review("Old Review", 1);
+        reviewId = 1;
+    }
+    @Given("I have supplied amended review")
+    public void i_have_supplied_amended_review() {
+        amendedReview = "Test Review";
+    }
+    @When("I save updated review")
+    public void i_save_updated_review() {
+        updatedReview = new Review(amendedReview,reviewID);
+        actual = sakilaDatabaseApplication.updateReview(0,
+                updatedReview.getCustomer_review());
+        ArgumentCaptor<Review> reviewArgumentCaptor = ArgumentCaptor.forClass(Review.class);
+        verify(reviewRepository).save(reviewArgumentCaptor.capture());
+        reviewArgumentCaptor.getValue();
+    }
+    @Then("I receive an update saved confirmation")
+    public void i_receive_an_update_saved_confirmation() {
+        String expected = "save";
+        Assertions.assertEquals(expected,actual,"Update failed");
+    }
 
 }

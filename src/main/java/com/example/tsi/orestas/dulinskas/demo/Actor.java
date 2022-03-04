@@ -26,8 +26,6 @@ public class Actor implements Serializable {
         this.last_name = last_name;
     }
 
-    // TEST NEEDED FOR public Actor()
-
     public Actor(){
     }
 
