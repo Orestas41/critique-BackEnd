@@ -1,4 +1,4 @@
-# projectSakilaDemo - Film reviews webiste
+# critique - Back-End - Film reviews webiste
 
 Author: Orestas Dulinskas
 
