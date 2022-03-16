@@ -10,6 +10,7 @@ Author: Orestas Dulinskas
 
 + IntelliJ IDEA Community Edition 2021.3.1
 + MySqL Workbench 8.0 CE
++ Amazon Web Services (AWS)
 
 ### Extra Utilities
 
@@ -21,9 +22,25 @@ Author: Orestas Dulinskas
 + Amazon AWS SecretManager SDK 1.12.159
 + Selenium 3.141.50
 + Apache Maven 2.22.0
-+ Bonigarcia 5.0.3
++ Jenkins
 
-##  Development Environment Set-Up
+##  Development Process
+
+![process](./images/process.png)
+
+Back-End of the website:
+1. Database setup
+   1. Reviews table created and added to already existent mock database (Sakila database)
+2. Back-End application
+   1. Rest Controller (Spring Boot) tool used to create and handle REST APIs (CRUD operations)
+   2. Hosted on AWS EC2 instance
+3. Continuous Integration
+   1. Pipeline built using Jenkins
+   2. Back-End is pulled from GitHub, tested and pushed to a tested branch on GitHub
+_____
+
+MySQL ERD diagram of Sakila database. Reviews table created with a Many-to-One relationship with Films table
+![sql](./images/sql.png)
 
 ### **Bash Script**
 
@@ -32,208 +49,14 @@ Author: Orestas Dulinskas
     wget https://lumia41.s3.amazonaws.com/maven-unit-test.jar
     java -jar maven-unit-test.jar
 
-## Software Design
-
-### **Project management**
-
---
-
-### **Architecture**
-
-### Tree Diagram
-
-    │   .gitignore
-    │   HELP.md
-    │   mvnw
-    │   mvnw.cmd
-    |   README.md
-    │   pom.xml
-    │
-    ├───.github
-    │   └───workflows
-    │           build.yml
-    │
-    ├───.idea
-    │   │   .gitignore
-    │   │   compiler.xml
-    │   │   encodings.xml
-    │   │   jarRepositories.xml
-    │   │   misc.xml
-    │   │   uiDesigner.xml
-    │   │   vcs.xml
-    │   │   workspace.xml
-    │   │
-    │   └───artifacts
-    │           demo_jar.xml
-    │
-    ├───.mvn
-    │   └───wrapper
-    │           maven-wrapper.jar
-    │           maven-wrapper.properties
-    │
-    ├───out
-    │   └───artifacts
-    │       └───demo_jar
-    │               demo.jar
-    │
-    ├───src
-    │   ├───main
-    │   │   ├───java
-    │   │   │   ├───com
-    │   │   │   │   └───example
-    │   │   │   │       └───tsi
-    │   │   │   │           └───orestas
-    │   │   │   │               └───dulinskas
-    │   │   │   │                   └───demo
-    │   │   │   │                           Actor.java
-    │   │   │   │                           ActorRepository.java
-    │   │   │   │                           Customer.java
-    │   │   │   │                           CustomerRepository.java
-    │   │   │   │                           Film.java
-    │   │   │   │                           FilmRepository.java
-    │   │   │   │                           Review.java
-    │   │   │   │                           ReviewRepository.java
-    │   │   │   │                           SakilaDatabaseApplication.java
-    │   │   │   │
-    │   │   │   └───META-INF
-    │   │   │           MANIFEST.MF
-    │   │   │
-    │   │   └───resources
-    │   │       │   application.properties
-    │   │       │
-    │   │       ├───static
-    │   │       └───templates
-    │   └───test
-    │       ├───java
-    │       │   └───com
-    │       │       └───example
-    │       │           └───tsi
-    │       │               └───orestas
-    │       │                   └───dulinskas
-    │       │                       └───demoTest
-    │       │                               menuCucumberStepsDef.java
-    │       │                               MockitoTest.java
-    │       │                               PenislandTestTest.java
-    │       │                               runCucumberTest.java
-    │       │                               SakilaDatabaseApplicationTest.java
-    │       │
-    │       └───resources
-    │           └───Cucumber
-    │                   reviews.feature
-    │
-    └───target
-        │   jacoco.exec
-        │
-        ├───classes
-        │   │   application.properties
-        │   │
-        │   └───com
-        │       └───example
-        │           └───tsi
-        │               └───orestas
-        │                   └───dulinskas
-        │                       └───demo
-        │                               Actor.class
-        │                               ActorRepository.class
-        │                               Customer.class
-        │                               CustomerRepository.class
-        │                               Film.class
-        │                               FilmRepository.class
-        │                               Review.class
-        │                               ReviewRepository.class
-        │                               SakilaDatabaseApplication.class
-        │
-        ├───generated-sources
-        │   └───annotations
-        ├───generated-test-sources
-        │   └───test-annotations
-        ├───maven-status
-        │   └───maven-compiler-plugin
-        │       ├───compile
-        │       │   └───default-compile
-        │       │           createdFiles.lst
-        │       │           inputFiles.lst
-        │       │
-        │       └───testCompile
-        │           └───default-testCompile
-        │                   createdFiles.lst
-        │                   inputFiles.lst
-        │
-        ├───surefire-reports
-        │       com.example.tsi.orestas.dulinskas.demoTest.MockitoTest.txt
-        │       com.example.tsi.orestas.dulinskas.demoTest.SakilaDatabaseApplicationTest.txt
-        │       TEST-com.example.tsi.orestas.dulinskas.demoTest.MockitoTest.xml
-        │       TEST-com.example.tsi.orestas.dulinskas.demoTest.SakilaDatabaseApplicationTest.xml
-        │
-        └───test-classes
-            ├───com
-            │   └───example
-            │       └───tsi
-            │           └───orestas
-            │               └───dulinskas
-            │                   └───demoTest
-            │                           menuCucumberStepsDef.class
-            │                           MockitoTest.class
-            │                           PenislandTestTest.class
-            │                           runCucumberTest.class
-            │                           SakilaDatabaseApplicationTest.class
-            │
-            └───Cucumber
-                    reviews.feature
-
-### Architecture design
-
-Three tier monolithic structure
-
-    Web layer - ??
-    |
-    Application layer - Java JDK 17
-    |
-    Database layer - MySqL Workbench 8.0 CE
-    
-## Risk Assessment
-
-### **SWOT Analysis**
-+ Strengths
-    + Simple
-    + Extensively tested
-+ Weaknesses
-    + Not a lot of features
-    + Inexperienced developer
-+ Opportunities
-    + Adding more features
-+ Threats
-    + Inexperienced developer
-    
-### Risk assessment Matrix and Particular Issues
-
-??
-
-## Programming/Software Development
-
-### **Version Control System**
-
-#### **GitHub**
-
-I have used git and github to manage and store different version with different branches created for different features.
-
-Public Git Page <https://github.com/Orestas41/projectSakilaDemo>
-
-Clone Link <https://github.com/Orestas41/projectSakilaDemo.git>
-
-### **Tools used**
-
-+ Jenkins
-+ Microsoft 
-+ Amazon Web Services (AWS)
-+ Ubuntu ?.?
-+ MySqL Workbench 8.0 CE
-
 ## Testing
 
 ### **Unit testing**
 
 Overall Coverage 95.8%
+
+SonarCloud.io was used for catching bugs and security vulnerabilities. As well as measure code coverage (using Jacoco toolkit)
+![sonar](./images/sonar.png)
 
 ## Systems Integration and Build
 
@@ -251,21 +74,3 @@ Overall Coverage 95.8%
     sudo systemctl daemon-reload
     sudo systemctl start jenkins
     sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
-### Configuration script 
-
-??
-
-### **Features**
-
-### Front Page
-
-??
-
-# Future Improvements
-
-??
-
-## References
-
-??

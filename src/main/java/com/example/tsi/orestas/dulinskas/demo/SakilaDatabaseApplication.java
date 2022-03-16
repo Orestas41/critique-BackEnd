@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-//@CrossOrigin(origins = "http://3.88.31.41:8080/HomePage/")
+@CrossOrigin(origins = "http://3.88.31.41:8080/HomePage/")
 @SpringBootApplication
 @RestController
 @RequestMapping("/HomePage")
