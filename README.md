@@ -2,7 +2,17 @@
 
 Author: Orestas Dulinskas
 
+I developed a web application using modern technologies and best practices. I built a REST API with CRUD functionality using Springboot, which allowed for easier scalability and production readiness.
 
+To ensure better performance and high availability, I set up a MySQL database locally and linked it to AWS RDS. I also created an executable Jar file with dependencies using Maven and deployed it on an AWS S3 bucket for easier and faster deployment.
+
+For the front-end of the application, I used JavaScript (React library + CSS) to create a dynamic and user-friendly website with a responsive design that provides smooth navigation and an interactive user interface.
+
+To automate the build, test, and deployment processes, I built a CI pipeline using Jenkins. I also hosted the back-end, front-end, and Jenkins instances on AWS EC2 to make it easier to deploy, manage, and scale the application.
+
+Testing is crucial for software development, and I utilized various testing tools, including JUnit, Cucumber, Mockito, and Selenium, to ensure the quality of the application. I also used SonarCloud to statically test the code and detect any issues before deployment.
+
+Overall, this individual project demonstrated my ability to utilize modern technologies, best practices, and testing tools to develop a scalable and high-performance web application with a user-friendly interface.
 
 ## Packages Used (Runtime Requirements)
 
